@@ -1,0 +1,115 @@
+.search-box {
+  background: #d3d3d3;
+
+  border-radius: 20px;
+  border-color: #fff;
+  border: 10px solid #ffffff;  padding: 28px;
+  margin: -70px auto 40px;
+  width: 95%;
+  max-width: 1200px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+  direction: rtl;
+}
+
+.search-tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.search-tab {
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.search-tab.active {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.search-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 18px;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 50px; */
+}
+
+.form-item label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.form-item select,
+.form-item input {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-item select:focus,
+.form-item input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.search-btn-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.search-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-top:20px ;
+}
+
+.search-btn:hover {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+}
+
+/* 📱 ریسپانسیو */
+@media (max-width: 1200px) {
+  .search-form .form-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .search-form .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form .form-row {
+    grid-template-columns: 1fr;
+  }
+}

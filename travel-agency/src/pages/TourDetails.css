@@ -1,0 +1,272 @@
+:root {
+  --main-text: #1f2937;
+  --heading: #1e3a8a;
+  --accent: #2563eb;
+  --subtle: #6b7280;
+  --border: #e5e7eb;
+  --success: #059669;
+  --background-light: #f6f9fd;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* --font-fa: "Vazirmatn", sans-serif; */
+}
+
+body {
+  font-family: var(--font-fa);
+}
+
+.tour-container {
+  max-width: 1100px;
+  margin: 1px auto;
+  padding: 20px;
+  color: var(--main-text);
+  direction: rtl;
+  /* background-color: #d9e6ff35; */
+  border-left: 2px solid #ebebeb ;
+  border-right: 2px solid #ebebeb ;
+    box-shadow: var(--box-shadow);
+
+
+}
+
+.tour-header {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 24px;
+  direction: rtl;
+}
+
+.tour-slider {
+  flex: 1.5;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+.tour-slider .slick-list,
+.tour-slider .slick-track {
+  direction: ltr;
+}
+
+.tour-slider img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  /* border-radius: 5px; */
+}
+
+.tour-info {
+  flex: 1;
+  direction: rtl;
+  background: var(--background-light);
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+.tour-info h1 {
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+  color: var(--heading);
+}
+
+.tour-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: var(--subtle);
+}
+
+.tour-info p strong {
+  color: var(--main-text);
+}
+
+.tour-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.tour-box section {
+  background-color: var(--background-light);
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: var(--box-shadow);
+  /* padding: 24px; */
+}
+
+.tour-box h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.hotel-flight p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: var(--main-text);
+    margin-right: 20px;
+    margin-bottom: 10px;
+
+}
+
+.rich{
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+/* ===== نوار بالای باکس‌ها ===== */
+.with-header {
+  padding-top: 50px;
+  position: relative;
+}
+
+.with-header .section-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 40px;
+  background: linear-gradient(to left, #2a5dde );
+  background-color: hsla(19, 100%, 41%, 0.618);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: inset 0 -1px 0 #e0e7ff;
+}
+
+/* ===== خدمات و برنامه بازدید ===== */
+.services-itinerary {
+  /* padding: 0px; */
+  position: relative;
+  overflow: hidden;
+}
+.services-itinerary.with-header {
+  padding: 0 !important;
+  
+}
+.services-itinerary .header-row {
+  display: flex;
+  height: 40px;
+  background: linear-gradient(to left, #2ac6de 50%, #62a6cd 50%);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #090000;
+}
+.services-itinerary .with-header{
+  padding: 0px !important; 
+}
+.services-itinerary .header-col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+}
+
+
+.services-itinerary .content-row {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  justify-content: center;
+}
+
+.services-itinerary .column {
+  flex: 1;
+}
+
+.services-itinerary ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.services-itinerary li {
+  padding: 5px 0;
+  font-size: 0.95rem;
+  color: var(--main-text);
+  position: relative;
+  padding-right: 18px;
+}
+
+.services-itinerary li::before {
+  content: "✓";
+  position: absolute;
+  right: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.services-itinerary .divider {
+  width: 1px;
+  background: var(--border);
+}
+
+/* ===== توضیحات ===== */
+.notes {
+  line-height: 1.8;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
+.divider2 {
+  height: 2px;              /* ضخامت خط */
+  width: 60%;               /* طول خط (کوتاه‌تر از 100%) */
+  background-color: var(--border);
+  margin: 12px auto;        /* فاصله بالا و پایین و وسط چین افقی */
+  border-radius: 2px;       /* گوشه‌های نرم */
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 992px) {
+  .tour-header {
+    flex-direction: column;
+  }
+
+  .tour-slider img {
+    height: 280px;
+  }
+
+  .services-itinerary .content-row {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .services-itinerary .divider {
+    display: none;
+  }
+
+  .services-itinerary .header-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .services-itinerary .header-col {
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .services-itinerary .header-col:first-child {
+    border-top: none;
+  }
+
+  .with-header .section-header {
+    font-size: 0.95rem;
+    height: 36px;
+  }
+
+  .with-header {
+    padding-top: 46px;
+  }
+
+}

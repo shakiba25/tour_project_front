@@ -1,0 +1,162 @@
+/* === استایل هدر (Desktop) === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header .logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.header nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #374151;
+  transition: color 0.3s;
+}
+
+.header nav a:hover {
+  color: #2563eb;
+}
+
+.header button {
+  background: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.header button:hover {
+  background: #1e40af;
+}
+
+/* === هیرو (Desktop) === */
+.hero {
+  height: 100vh;
+  background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e")
+    center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 100px;
+  color: white;
+  text-align: left;
+}
+
+.hero .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  border-radius: 16px;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 28px;
+}
+
+.hero button {
+  background: #f97316;
+  color: white;
+  padding: 14px 28px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero button:hover {
+  background: #ea580c;
+}
+
+/* === مقاصد محبوب (Desktop) === */
+.destinations {
+  padding: 60px 80px;
+}
+
+.destinations h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.destinations .grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.destination-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  background: white;
+  transition: transform 0.3s;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+}
+
+.destination-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.destination-card h3 {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* === فوتر === */
+.footer {
+  background: #f3f4f6;
+  text-align: center;
+  padding: 20px;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+/* 📱 موبایل و تبلت */
+@media (max-width: 1024px) {
+  .header {
+    padding: 16px 24px;
+  }
+  .header nav {
+    display: none; /* منوی دسکتاپ پنهان بشه */
+  }
+  .hero {
+    justify-content: center;
+    text-align: center;
+    padding-left: 0;
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .destinations {
+    padding: 40px 20px;
+  }
+  .destinations .grid {
+    grid-template-columns: 1fr;
+  }
+}
