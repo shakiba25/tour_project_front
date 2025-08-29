@@ -36,7 +36,7 @@
   width: 100%;
   max-width: 760px; /* narrower */
   height:  100%;
-  max-height: 760px; /* narrower */
+  max-height: 590px; /* narrower */
   background: var(--panel);
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,.25);
@@ -111,4 +111,47 @@
 
 @media (max-width: 820px) {
   .chat { max-width: 100%; border-radius: 14px; }
+}
+.chat__composer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #ddd;
+  background: var(--bg, #fff);
+}
+
+.chat__composer .input {
+  flex: 1;                /* پر کردن فضای باقی‌مونده */
+  resize: none;           /* جلوگیری از تغییر سایز دستی */
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat__composer .send-btn {
+  background: #4f46e5;    /* همون رنگ تم قبلی */
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat__composer .send-btn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.chat__composer .send-btn .icon {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  fill: none;
 }
