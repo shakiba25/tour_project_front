@@ -14,24 +14,27 @@ export default function SearchBox() {
   const [selectedDestination, setSelectedDestination] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-
+  const [stayDuration, setStayDuration] = useState("");
+  const [hotelStar, setHotelStar] = useState("");
 
   const navigate = useNavigate();
-const handleSearch = (e) => {
-  e.preventDefault();
+  const handleSearch = (e) => {
+    e.preventDefault();
 
-  const params = new URLSearchParams();
+    const params = new URLSearchParams();
 
-  if (selectedDestination) params.append("destination", selectedDestination);
-  if (startDate) params.append("startDate", startDate.format("YYYY-MM-DD"));
-  if (endDate) params.append("endDate", endDate.format("YYYY-MM-DD"));
+    if (selectedDestination) params.append("destination", selectedDestination);
+    if (startDate) params.append("startDate", startDate.format("YYYY-MM-DD"));
+    if (endDate) params.append("endDate", endDate.format("YYYY-MM-DD"));
 
-  // تب فعال (داخلی/خارجی) هم اگه خواستی بفرست
-  if (activeTab) params.append("type", activeTab);
+    // تب فعال (داخلی/خارجی) هم اگه خواستی بفرست
+    if (activeTab) params.append("type", activeTab);
 
-  // برو به صفحه لیست تورها با پارامترها
-  navigate(`/tours?${params.toString()}`);
-};
+    if (stayDuration) params.append("duration", stayDuration);
+    if (hotelStar) params.append("hotelStar", hotelStar);
+    // برو به صفحه لیست تورها با پارامترها
+    navigate(`/tours?${params.toString()}`);
+  };
 
   useEffect(() => {
     axiosClient
@@ -113,7 +116,13 @@ const handleSearch = (e) => {
                 calendar={persian}
                 locale={persian_fa}
                 value={startDate}
-                onChange={setStartDate}
+                onChange={(date) => {
+                  setStartDate(date);
+                  console.log(
+                    "تاریخ انتخاب‌شده رفت:",
+                    date?.format?.("YYYY/MM/DD")
+                  );
+                }}
                 inputClass="custom-input"
                 placeholder="تاریخ رفت را انتخاب کنید"
                 calendarPosition="bottom-right"
@@ -162,28 +171,33 @@ const handleSearch = (e) => {
           </div>
 
           <div className="form-item">
-            <label >مدت اقامت</label>
-            
-            <select>
+            <label>مدت اقامت</label>
+            <select
+              value={stayDuration}
+              onChange={(e) => setStayDuration(e.target.value)}
+            >
               <option value="">همه</option>
-              <option>2 شب</option>
-              <option>3 شب</option>
-              <option>4 شب</option>
-              <option>5 شب</option>
-              <option>6 شب</option>
-              <option>7 شب</option>
-              <option>8 شب</option>
-              <option>9 شب</option>
+              <option value="2">2 شب</option>
+              <option value="3">3 شب</option>
+              <option value="4">4 شب</option>
+              <option value="5">5 شب</option>
+              <option value="6">6 شب</option>
+              <option value="7">7 شب</option>
+              <option value="8">8 شب</option>
+              <option value="9">9 شب</option>
             </select>
           </div>
 
           <div className="form-item">
             <label>هتل</label>
-            <select>
-              <option>همه</option>
-              <option>3 ستاره</option>
-              <option>4 ستاره</option>
-              <option>5 ستاره</option>
+            <select
+              value={hotelStar}
+              onChange={(e) => setHotelStar(e.target.value)}
+            >
+              <option value="">همه</option>
+              <option value="3">3 ستاره</option>
+              <option value="4">4 ستاره</option>
+              <option value="5">5 ستاره</option>
             </select>
           </div>
 
@@ -197,3 +211,6 @@ const handleSearch = (e) => {
     </div>
   );
 }
+
+
+

@@ -1,310 +1,87 @@
-// // TourList.jsx
-
-// import React, { useState, useMemo , useEffect } from "react";
-// import { useSearchParams } from "react-router-dom";
-// import axiosClient from "../api/axiosClient";
-// import Slider from "rc-slider";
-// import "rc-slider/assets/index.css";
-// import DatePicker from "react-multi-date-picker";
-// import persian from "react-date-object/calendars/persian";
-// import persian_fa from "react-date-object/locales/persian_fa";
-// import "./TourList.css";
-
-// // const toursData = [
-// //   {
-// //     tour_id: "tour_001",
-// //     name: "تور 3 روزه کیش",
-// //     destination: "کیش",
-// //     duration_days: 3,
-// //     price_usd: 200,
-// //     departure: { date: "1404-08-15", time: "08:30" },
-// //     return: { date: "1404-08-18", time: "18:45" },
-// //     hotel: { name: "هتل ترنج", star: 4 },
-// //     services: [
-// //       "پرواز رفت و برگشت",
-// //       "ترانسفر فرودگاهی",
-// //       "صبحانه",
-// //       "هتل 4 ستاره",
-// //     ],
-// //     itinerary: ["بازدید از شهر تاریخی حریره", "ساحل مرجانی", "کشتی یونانی"],
-// //     insurance_included: true,
-// //     rich_text:
-// //       "در ایام خاص مانند <b>تعطیلات نوروز</b> امکان افزایش قیمت وجود دارد.",
-// //     images: [
-// //       "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //       "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //       "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //     ],
-// //   },
-// //   {
-// //     tour_id: "tour_002",
-// //     name: "تور 5 روزه مشهد",
-// //     destination: "مشهد",
-// //     duration_days: 5,
-// //     price_usd: 350,
-// //     departure: { date: "1404-09-10", time: "09:00" },
-// //     return: { date: "1404-09-15", time: "20:00" },
-// //     hotel: { name: "هتل سیمرغ", star: 3 },
-// //     services: ["پرواز رفت و برگشت", "صبحانه", "هتل 3 ستاره"],
-// //     itinerary: ["بازدید از حرم امام رضا", "شهر تاریخی توس"],
-// //     insurance_included: false,
-// //     rich_text: "امکان رزرو گروهی با تخفیف.",
-// //     images: [
-// //       "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //     ],
-// //   },
-// //   {
-// //     tour_id: "tour_002",
-// //     name: "تور 5 روزه مشهد",
-// //     destination: "مشهد",
-// //     duration_days: 5,
-// //     price_usd: 350,
-// //     departure: { date: "1404-09-10", time: "09:00" },
-// //     return: { date: "1404-09-15", time: "20:00" },
-// //     hotel: { name: "هتل سیمرغ", star: 3 },
-// //     services: ["پرواز رفت و برگشت", "صبحانه", "هتل 3 ستاره"],
-// //     itinerary: ["بازدید از حرم امام رضا", "شهر تاریخی توس"],
-// //     insurance_included: false,
-// //     rich_text: "امکان رزرو گروهی با تخفیف.",
-// //     images: [
-// //       "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //     ],
-// //   },
-// //   {
-// //     tour_id: "tour_002",
-// //     name: "تور 5 روزه مشهد",
-// //     destination: "مشهد",
-// //     duration_days: 5,
-// //     price_usd: 350,
-// //     departure: { date: "1404-09-10", time: "09:00" },
-// //     return: { date: "1404-09-15", time: "20:00" },
-// //     hotel: { name: "هتل سیمرغ", star: 3 },
-// //     services: ["پرواز رفت و برگشت", "صبحانه", "هتل 3 ستاره"],
-// //     itinerary: ["بازدید از حرم امام رضا", "شهر تاریخی توس"],
-// //     insurance_included: false,
-// //     rich_text: "امکان رزرو گروهی با تخفیف.",
-// //     images: [
-// //       "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //     ],
-// //   },
-// //   {
-// //     tour_id: "tour_002",
-// //     name: "تور 5 روزه مشهد",
-// //     destination: "مشهد",
-// //     duration_days: 5,
-// //     price_usd: 350,
-// //     departure: { date: "1404-09-10", time: "09:00" },
-// //     return: { date: "1404-09-15", time: "20:00" },
-// //     hotel: { name: "هتل سیمرغ", star: 3 },
-// //     services: ["پرواز رفت و برگشت", "صبحانه", "هتل 3 ستاره"],
-// //     itinerary: ["بازدید از حرم امام رضا", "شهر تاریخی توس"],
-// //     insurance_included: false,
-// //     rich_text: "امکان رزرو گروهی با تخفیف.",
-// //     images: [
-// //       "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
-// //     ],
-// //   },
-// // ];
-
-// const [tours, setTours] = useState([]);
-// const [loading, setLoading] = useState(true);
-// const [searchParams] = useSearchParams();
-
-// useEffect(() => {
-//   const fetchTours = async () => {
-//     setLoading(true);
-//     try {
-//       const response = await axiosClient.get("/tours/", {
-//         params: {
-//           destination: searchParams.get("destination") || undefined,
-//           start_date: searchParams.get("startDate") || undefined,
-//           end_date: searchParams.get("endDate") || undefined,
-//           type: searchParams.get("type") || undefined,
-//         },
-//       });
-//       setTours(response.data);
-//     } catch (error) {
-//       console.error("خطا در دریافت تورها:", error);
-//       setTours([]);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   fetchTours();
-// }, [searchParams]);
-
-// export default function TourList() {
-//   const [selectedDestinations, setSelectedDestinations] = useState([]);
-//   const [priceRange, setPriceRange] = useState([0, 1000]);
-//   const [dateFrom, setDateFrom] = useState(null);
-//   const [showDestinations, setShowDestinations] = useState(true);
-
-//   const destinations = useMemo(() => {
-//     const unique = new Set(toursData.map((t) => t.destination));
-//     return Array.from(unique);
-//   }, []);
-
-//   const prices = useMemo(() => toursData.map((t) => t.price_usd), []);
-//   const absoluteMinPrice = Math.min(...prices);
-//   const absoluteMaxPrice = Math.max(...prices);
-
-//   const filteredTours = useMemo(() => {
-//     return toursData.filter((tour) => {
-//       if (
-//         selectedDestinations.length > 0 &&
-//         !selectedDestinations.includes(tour.destination)
-//       ) {
-//         return false;
-//       }
-//       if (dateFrom) {
-//         if (new Date(tour.departure.date) < dateFrom.toDate()) return false;
-//       }
-//       if (tour.price_usd < priceRange[0] || tour.price_usd > priceRange[1])
-//         return false;
-
-//       return true;
-//     });
-//   }, [selectedDestinations, dateFrom, priceRange]);
-
-//   function toggleDestination(dest) {
-//     if (selectedDestinations.includes(dest)) {
-//       setSelectedDestinations(selectedDestinations.filter((d) => d !== dest));
-//     } else {
-//       setSelectedDestinations([...selectedDestinations, dest]);
-//     }
-//   }
-
-//   return (
-//     <div className="tour-page">
-//       {/* فیلترها */}
-//       <aside className="filter-box">
-//         <h3>فیلتر تورها</h3>
-
-//         {/* مقصد */}
-//         <div className="filter-section">
-//           <strong
-//             style={{ cursor: "pointer" }}
-//             onClick={() => setShowDestinations(!showDestinations)}
-//           >
-//             مقصدها {showDestinations ? "▲" : "▼"}
-//           </strong>
-//           {showDestinations && (
-//             <div className="filter-options">
-//               {destinations.map((dest) => (
-//                 <label key={dest}>
-//                   <input
-//                     type="checkbox"
-//                     checked={selectedDestinations.includes(dest)}
-//                     onChange={() => toggleDestination(dest)}
-//                   />{" "}
-//                   {dest}
-//                 </label>
-//               ))}
-//             </div>
-//           )}
-//         </div>
-
-//         {/* تاریخ */}
-//         <div className="filter-section">
-//           <strong>نمایش از تاریخ:</strong>
-//           <DatePicker
-//             value={dateFrom}
-//             onChange={setDateFrom}
-//             calendar={persian}
-//             locale={persian_fa}
-//             style={{ width: "100%", marginTop: 8 }}
-//           />
-//         </div>
-
-//         {/* قیمت */}
-//         <div className="filter-section">
-//           <strong>قیمت (دلار):</strong>
-//           <div style={{ marginTop: 15 }}>
-//             <Slider
-//               range
-//               min={absoluteMinPrice}
-//               max={absoluteMaxPrice}
-//               value={priceRange}
-//               onChange={setPriceRange}
-//             />
-//             <div style={{ marginTop: 10, fontSize: 14 }}>
-//               {priceRange[0]}$ - {priceRange[1]}$
-//             </div>
-//           </div>
-//         </div>
-//       </aside>
-
-//       {/* لیست تورها */}
-//       <section className="tour-list">
-//         {filteredTours.length === 0 ? (
-//           <p>هیچ توری با این فیلتر پیدا نشد.</p>
-//         ) : (
-//           filteredTours.map((tour) => (
-//             <div key={tour.tour_id} className="tour-card">
-//               <img src={tour.images[0]} alt={tour.name} />
-//               <div className="tour-info">
-//                 <h2>{tour.name}</h2>
-
-//                 <div className="tour-details-row">
-//                   <p className="tour-detail">
-//                     مقصد: <strong>{tour.destination}</strong>
-//                   </p>
-//                   <span className="separator">|</span>
-//                   <p className="tour-detail">
-//                     مدت: <strong>{tour.duration_days} روز</strong>
-//                   </p>
-//                   <span className="separator">|</span>
-//                   <p className="tour-detail">
-//                     تاریخ رفت: <strong>{tour.departure.date}</strong>
-//                   </p>
-//                   <span className="separator">|</span>
-//                   <p className="tour-detail">
-//                     قیمت: <strong>${tour.price_usd}</strong>
-//                   </p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))
-//         )}
-//       </section>
-//     </div>
-//   );
-// }
-
-// TourList.jsx
-
 import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axiosClient from "../api/axiosClient";
-import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
 import "./TourList.css";
+import TourFilterBox from "../components/TourFilterBox";
+import dayjs from "dayjs";
+
+import { useNavigate } from "react-router-dom";
 
 export default function TourList() {
-  const [tours, setTours] = useState([]);
+  const [allTours, setAllTours] = useState([]); // همه تورها برای لیست مقاصد
+  const [tours, setTours] = useState([]); // تورهای فیلتر شده
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
 
-  // فیلترهای لوکال
+  // فیلترهای محلی
   const [selectedDestinations, setSelectedDestinations] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [dateFrom, setDateFrom] = useState(null);
-  const [showDestinations, setShowDestinations] = useState(true);
+  const [numOfDays, setNumOfDays] = useState("");
+  const [hotelStar, sethotelStar] = useState("");
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const params = new URLSearchParams();
+
+    if (selectedDestinations.length > 0) {
+      selectedDestinations.forEach((dest) => {
+        params.append("destination", dest);
+      });
+    }
+
+    if (dateFrom) {
+      params.set("startDate", dateFrom);
+    }
+    if (numOfDays) {
+      params.set("duration", numOfDays);
+    }
+    if (hotelStar) {
+      params.set("hotelStar", hotelStar);
+    }
+    if (priceRange && priceRange.length === 2) {
+      params.set("minPrice", priceRange[0]);
+      params.set("maxPrice", priceRange[1]);
+    }
+
+    // تغییر URL بدون رفرش صفحه
+    navigate(`/tours?${params.toString()}`, { replace: true });
+  }, [
+    selectedDestinations,
+    dateFrom,
+    numOfDays,
+    hotelStar,
+    priceRange,
+    navigate,
+  ]);
+
+  // دریافت همه تورها برای ساخت لیست مقصدها
+  useEffect(() => {
+    const fetchAllTours = async () => {
+      try {
+        const response = await axiosClient.get("/tours/");
+        setAllTours(response.data);
+      } catch (error) {
+        console.error("خطا در دریافت همه تورها:", error);
+        setAllTours([]);
+      }
+    };
+    fetchAllTours();
+  }, []);
+
+  // دریافت تورهای فیلتر شده بر اساس پارامترهای URL
   useEffect(() => {
     const fetchTours = async () => {
       setLoading(true);
       try {
         const response = await axiosClient.get("/tours/", {
           params: {
-            destination: searchParams.get("destination") || undefined,
+            destination: searchParams.getAll("destination") || undefined,
             start_date: searchParams.get("startDate") || undefined,
             end_date: searchParams.get("endDate") || undefined,
             type: searchParams.get("type") || undefined,
+            duration_days: searchParams.get("duration") || undefined,
+            hotelStar: searchParams.get("hotelStar") || undefined,
           },
         });
         setTours(response.data);
@@ -315,29 +92,60 @@ export default function TourList() {
         setLoading(false);
       }
     };
-
     fetchTours();
   }, [searchParams]);
 
-  // مقاصد یکتا
+  // استخراج لیست مقصدها از همه تورها
   const destinations = useMemo(() => {
-    const unique = new Set(tours.map((t) => t.destination));
+    const unique = new Set(allTours.map((t) => t.destination));
     return Array.from(unique);
-  }, [tours]);
+  }, [allTours]);
 
-  // رنج قیمت‌ها
-  const prices = useMemo(() => tours.map((t) => t.price_usd), [tours]);
+  // محاسبه قیمت حداقل و حداکثر از همه تورها
+  const prices = useMemo(() => allTours.map((t) => t.price_usd), [allTours]);
   const absoluteMinPrice = prices.length ? Math.min(...prices) : 0;
   const absoluteMaxPrice = prices.length ? Math.max(...prices) : 1000;
 
-  // تنظیم رنج اولیه بعد از دریافت داده
+  // تنظیم رنج قیمت اولیه
   useEffect(() => {
     if (prices.length) {
       setPriceRange([absoluteMinPrice, absoluteMaxPrice]);
     }
   }, [absoluteMinPrice, absoluteMaxPrice]);
 
-  // فیلتر کردن تورها
+  // ست کردن فیلترهای اولیه بر اساس URL
+  useEffect(() => {
+    const destsFromUrl = searchParams.getAll("destination");
+    if (destsFromUrl.length > 0) {
+      setSelectedDestinations(destsFromUrl);
+    } else {
+      setSelectedDestinations([]);
+    }
+
+    const startDateFromUrl = searchParams.get("startDate");
+    if (startDateFromUrl) {
+      setDateFrom(startDateFromUrl);
+    } else {
+      setDateFrom(null);
+    }
+
+    const durationFromUrl =
+      searchParams.get("duration") || searchParams.get("type");
+    if (durationFromUrl) {
+      setNumOfDays(durationFromUrl);
+    } else {
+      setNumOfDays("");
+    }
+
+    const hotelStarFromUrl = searchParams.get("hotelStar");
+    if (hotelStarFromUrl) {
+      sethotelStar(hotelStarFromUrl);
+    } else {
+      sethotelStar("");
+    }
+  }, [searchParams]);
+
+  // فیلتر کردن تورها (توجه: اینجا از `tours` که از سرور فیلتر شده استفاده می‌کنیم، اما باز فیلتر محلی هم میزنیم)
   const filteredTours = useMemo(() => {
     return tours.filter((tour) => {
       if (
@@ -348,21 +156,45 @@ export default function TourList() {
       }
 
       if (dateFrom) {
-        const tourDate = new Date(tour.departure.date);
-        if (tourDate < dateFrom.toDate()) return false;
+        const formattedTourDate = tour.departure.date_jalali; // رشته ۱۴۰۴/۰۶/۱۵
+
+        let formattedDateFrom;
+        if (typeof dateFrom === "string") {
+          formattedDateFrom = dateFrom.replace(/[۰-۹]/g, (d) =>
+            "۰۱۲۳۴۵۶۷۸۹".indexOf(d).toString()
+          );
+        } else if (dayjs.isDayjs(dateFrom)) {
+          formattedDateFrom = dateFrom
+            .format("YYYY/MM/DD")
+            .replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d).toString());
+        } else {
+          return true;
+        }
+
+        const normalizedTourDate = formattedTourDate.replace(/[۰-۹]/g, (d) =>
+          "۰۱۲۳۴۵۶۷۸۹".indexOf(d).toString()
+        );
+
+        if (normalizedTourDate < formattedDateFrom) return false;
       }
 
-      if (
-        tour.price_usd < priceRange[0] ||
-        tour.price_usd > priceRange[1]
-      ) {
+      if (numOfDays && parseInt(tour.duration_days) !== parseInt(numOfDays)) {
         return false;
+      }
+      if (hotelStar && parseInt(tour.hotel.star) !== parseInt(hotelStar)) {
+        return false;
+      }
+      if (priceRange && priceRange.length === 2) {
+        if (tour.price_usd < priceRange[0] || tour.price_usd > priceRange[1]) {
+          return false;
+        }
       }
 
       return true;
     });
-  }, [tours, selectedDestinations, dateFrom, priceRange]);
+  }, [tours, selectedDestinations, dateFrom, priceRange, numOfDays]);
 
+  // تغییر انتخاب مقصد در فیلتر
   function toggleDestination(dest) {
     if (selectedDestinations.includes(dest)) {
       setSelectedDestinations((prev) => prev.filter((d) => d !== dest));
@@ -373,66 +205,20 @@ export default function TourList() {
 
   return (
     <div className="tour-page">
-      {/* فیلترها */}
-      <aside className="filter-box">
-        <h3>فیلتر تورها</h3>
+      <TourFilterBox
+        destinations={destinations}
+        selectedDestinations={selectedDestinations}
+        toggleDestination={toggleDestination}
+        dateFrom={dateFrom}
+        setDateFrom={setDateFrom}
+        priceRange={priceRange}
+        setPriceRange={setPriceRange}
+        absoluteMinPrice={absoluteMinPrice}
+        absoluteMaxPrice={absoluteMaxPrice}
+        numOfDays={numOfDays}
+        setNumOfDays={setNumOfDays}
+      />
 
-        {/* مقصدها */}
-        <div className="filter-section">
-          <strong
-            style={{ cursor: "pointer" }}
-            onClick={() => setShowDestinations(!showDestinations)}
-          >
-            مقصدها {showDestinations ? "▲" : "▼"}
-          </strong>
-          {showDestinations && (
-            <div className="filter-options">
-              {destinations.map((dest) => (
-                <label key={dest}>
-                  <input
-                    type="checkbox"
-                    checked={selectedDestinations.includes(dest)}
-                    onChange={() => toggleDestination(dest)}
-                  />{" "}
-                  {dest}
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* تاریخ رفت */}
-        <div className="filter-section">
-          <strong>نمایش از تاریخ:</strong>
-          <DatePicker
-            value={dateFrom}
-            onChange={setDateFrom}
-            calendar={persian}
-            locale={persian_fa}
-            style={{ width: "100%", marginTop: 8 }}
-            inputClass="custom-input"
-          />
-        </div>
-
-        {/* قیمت */}
-        <div className="filter-section">
-          <strong>قیمت (دلار):</strong>
-          <div style={{ marginTop: 15 }}>
-            <Slider
-              range
-              min={absoluteMinPrice}
-              max={absoluteMaxPrice}
-              value={priceRange}
-              onChange={setPriceRange}
-            />
-            <div style={{ marginTop: 10, fontSize: 14 }}>
-              {priceRange[0]}$ - {priceRange[1]}$
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      {/* لیست تورها */}
       <section className="tour-list">
         {loading ? (
           <p>در حال بارگذاری...</p>
@@ -444,7 +230,6 @@ export default function TourList() {
               <img src={tour.images[0]} alt={tour.name} />
               <div className="tour-info">
                 <h2>{tour.name}</h2>
-
                 <div className="tour-details-row">
                   <p className="tour-detail">
                     مقصد: <strong>{tour.destination}</strong>

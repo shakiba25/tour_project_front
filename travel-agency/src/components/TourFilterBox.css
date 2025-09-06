@@ -1,0 +1,74 @@
+.filter-box {
+  flex-basis: 280px;
+  padding: 20px;
+  background: #f6f9fd;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.filter-box h3 {
+  margin : 0px 15px 15px 0px;
+  color: #2563eb;
+}
+
+.filter-section {
+  margin-bottom: 25px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+.filter-options {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.destination-scroll {
+  max-height: 130px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-top:10px ;
+  
+}
+
+.custom-input-days{
+
+  margin-top:10px ;
+  margin-left:65px ;
+  
+}
+
+.date-picker-with-reset {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.reset-btn {
+  background: transparent;
+  border: none;
+  color: #e11d48;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px;
+}
