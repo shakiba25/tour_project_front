@@ -1,5 +1,8 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: system-ui;
+  /* font-family:  IRANSans, "Comfortaa", Tahoma, "Helvetica Neue", Arial, sans-serif;; */
+  /* font-family: "iranyekanwular_FaNum", Sans-serif;  ; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -14,6 +17,13 @@
   direction:  rtl;
   
 }
+
+/* @font-face {
+  font-family: 'BNazanin';
+  src: url('/src/assets/fonts/BNazanin.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+} */
 
 a {
   font-weight: 500;

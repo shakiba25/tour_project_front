@@ -13,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path="/1" element={<TourList />} />
+        <Route path="/tours" element={<TourList />} />
         <Route path="/tours/1" element={<TourDetails />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

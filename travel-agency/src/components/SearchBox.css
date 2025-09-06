@@ -49,6 +49,8 @@
   /* margin-top: 50px; */
 }
 
+
+
 .form-item label {
   font-size: 14px;
   margin-bottom: 6px;
@@ -64,7 +66,12 @@
   font-size: 14px;
   outline: none;
   transition: 0.3s;
+  
+  font-family: "IRANSans", Tahoma, Arial, sans-serif;
+  position: relative;
+  z-index: 10;
 }
+
 
 .form-item select:focus,
 .form-item input:focus {
@@ -95,6 +102,40 @@
   background: linear-gradient(135deg, #ea580c, #c2410c);
 }
 
+.date-picker-with-reset {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-input {
+  padding-left: 30px !important; /* جا برای دکمه سمت چپ */
+  width: 100%;
+  box-sizing: border-box;
+  text-align: right; /* متن راست به چپ */
+}
+
+.reset-btn {
+  background: transparent;
+  border: none;
+  color: #e53e3e;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  left: 10px; /* حالا سمت چپه */
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  line-height: 1;
+  z-index: 1000;
+}
+
+.reset-btn:hover {
+  color: #9b2c2c;
+}
+
 /* 📱 ریسپانسیو */
 @media (max-width: 1200px) {
   .search-form .form-row {
@@ -113,3 +154,5 @@
     grid-template-columns: 1fr;
   }
 }
+
+
