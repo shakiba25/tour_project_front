@@ -5,7 +5,6 @@ import TourDetails from "./pages/TourDetails";
 import TourList from "./pages/TourList";
 import ChatPage from "./pages/ChatPage";
 
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -14,7 +13,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/tours" element={<TourList />} />
-        <Route path="/tours/1" element={<TourDetails />} />
+        <Route path="/tours/:pk" element={<TourDetails />} />{" "}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

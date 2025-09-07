@@ -4,6 +4,7 @@ import axiosClient from "../api/axiosClient";
 import "./TourList.css";
 import TourFilterBox from "../components/TourFilterBox";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
@@ -102,7 +103,7 @@ export default function TourList() {
   }, [allTours]);
 
   // محاسبه قیمت حداقل و حداکثر از همه تورها
-  const prices = useMemo(() => allTours.map((t) => t.price_usd), [allTours]);
+  const prices = useMemo(() => allTours.map((t) => t.price), [allTours]);
   const absoluteMinPrice = prices.length ? Math.min(...prices) : 0;
   const absoluteMaxPrice = prices.length ? Math.max(...prices) : 1000;
 
@@ -185,7 +186,7 @@ export default function TourList() {
         return false;
       }
       if (priceRange && priceRange.length === 2) {
-        if (tour.price_usd < priceRange[0] || tour.price_usd > priceRange[1]) {
+        if (tour.price < priceRange[0] || tour.price > priceRange[1]) {
           return false;
         }
       }
@@ -226,7 +227,11 @@ export default function TourList() {
           <p>هیچ توری با این فیلتر پیدا نشد.</p>
         ) : (
           filteredTours.map((tour) => (
-            <div key={tour.tour_id} className="tour-card">
+            <Link
+              to={`/tours/${tour.tour_id}`}
+              key={tour.tour_id}
+              className="tour-card"
+            >
               <img src={tour.images[0]} alt={tour.name} />
               <div className="tour-info">
                 <h2>{tour.name}</h2>
@@ -244,11 +249,11 @@ export default function TourList() {
                   </p>
                   <span className="separator">|</span>
                   <p className="tour-detail">
-                    قیمت: <strong>${tour.price_usd}</strong>
+                    قیمت: <strong>${tour.price}</strong>
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         )}
       </section>
