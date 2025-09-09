@@ -177,38 +177,58 @@ export default function ChatApp() {
 
   function send() {
     const text = value.trim();
-    if (!text || !chatId) return;
+    if (!text) return;
 
     const userMsg = { id: Date.now(), role: "user", text, time: ts() };
     setMessages((m) => [...m, userMsg]);
     setValue("");
     setTyping(true);
 
-    chatApi
-      .sendMessage(chatId, text)
-      .then((res) => {
-        const botMsg = res.data.bot_msg;
-        const reply = {
-          id: botMsg.id,
-          role: "bot",
-          text: botMsg.content,
-          time: ts(),
-        };
-        setMessages((m) => [...m, reply]);
-      })
-      .catch((err) => {
-        console.error("خطا در پاسخ بات:", err);
-        const errorReply = {
-          id: Date.now() + 1,
-          role: "bot",
-          text: "❌ متاسفم، خطایی رخ داد.",
-          time: ts(),
-        };
-        setMessages((m) => [...m, errorReply]);
-      })
-      .finally(() => {
-        setTyping(false);
-      });
+    // جواب ساده: اگر پیام "سلام" بود، جواب "درود!" می‌دهد، در غیر این صورت پاسخ پیش‌فرض
+    setTimeout(() => {
+      const replyText = text === "سلام" ? "درود!" : "متوجه نشدم 🤔";
+      const botReply = {
+        id: Date.now() + 1,
+        role: "bot",
+        text: replyText,
+        time: ts(),
+      };
+      setMessages((m) => [...m, botReply]);
+      setTyping(false);
+    }, 3000); // شبیه سازی تأخیر پاسخ
+    // const text = value.trim();
+    // if (!text || !chatId) return;
+
+    // const userMsg = { id: Date.now(), role: "user", text, time: ts() };
+    // setMessages((m) => [...m, userMsg]);
+    // setValue("");
+    // setTyping(true);
+
+    // chatApi
+    //   .sendMessage(chatId, text)
+    //   .then((res) => {
+    //     const botMsg = res.data.bot_msg;
+    //     const reply = {
+    //       id: botMsg.id,
+    //       role: "bot",
+    //       text: botMsg.content,
+    //       time: ts(),
+    //     };
+    //     setMessages((m) => [...m, reply]);
+    //   })
+    //   .catch((err) => {
+    //     console.error("خطا در پاسخ بات:", err);
+    //     const errorReply = {
+    //       id: Date.now() + 1,
+    //       role: "bot",
+    //       text: "❌ متاسفم، خطایی رخ داد.",
+    //       time: ts(),
+    //     };
+    //     setMessages((m) => [...m, errorReply]);
+    //   })
+    //   .finally(() => {
+    //     setTyping(false);
+    //   });
   }
 
   function onKeyDown(e) {
@@ -275,7 +295,7 @@ export default function ChatApp() {
             <Message key={m.id} role={m.role} text={m.text} time={m.time} />
           ))}
           {typing && (
-            <Message role="bot" text={<Typing />} time="در حال نوشتن…" />
+            <Message role="bot" text={<Typing />} />
           )}
         </main>
 
@@ -290,7 +310,12 @@ export default function ChatApp() {
             rows={1}
           />
           <button className="send-btn" onClick={send} disabled={!value.trim()}>
-            <svg viewBox="0 0 24 24" className="icon">
+            <svg
+              viewBox="0 0 24 24"
+              className="icon-large"
+              style={{ width: "40px", height: "40px" }}
+            >
+              {" "}
               <path d="M22 2L11 13" />
               <path d="M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
@@ -318,13 +343,13 @@ function Message({ role, text, time }) {
 function Typing() {
   return (
     <span className="typing">
+      <span>در حال نوشتن</span>
       <i />
       <i />
       <i />
     </span>
   );
 }
-
 
 function resetChat() {
   setChatId(null);

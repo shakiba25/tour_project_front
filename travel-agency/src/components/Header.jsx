@@ -6,7 +6,7 @@ function Header() {
       <header className="header">
         <div className="logo">Logo</div>
         <nav>
-          <a href="#">صفحه اصلی</a>
+          <a href="#"> صفحه اصلی </a>
           <a href="#">درباره ما</a>
           <a href="#">تور‌ها</a>
           <a href="#">تماس</a>

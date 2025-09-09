@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import axiosClient from "../api/axiosClient";
+import { baseURL } from "../api/base";
 import "./TourList.css";
 import TourFilterBox from "../components/TourFilterBox";
 import dayjs from "dayjs";
@@ -232,7 +233,7 @@ export default function TourList() {
               key={tour.tour_id}
               className="tour-card"
             >
-              <img src={tour.images[0]} alt={tour.name} />
+              <img src={`${baseURL}${tour.images[0]?.url}`} alt={tour.name} />{" "}
               <div className="tour-info">
                 <h2>{tour.name}</h2>
                 <div className="tour-details-row">

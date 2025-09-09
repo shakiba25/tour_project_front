@@ -1,11 +1,11 @@
 .search-box {
   background: #d3d3d3;
-
+  font-family: system-ui;
   border-radius: 20px;
   border-color: #fff;
   border: 10px solid #ffffff;  padding: 28px;
   margin: -70px auto 40px;
-  width: 95%;
+  width: 75%;
   max-width: 1200px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   position: relative;
@@ -40,8 +40,10 @@
 .search-form .form-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  /* grid-template-columns: repeat(5, 1fr) 2fr 2fr; */
   gap: 18px;
 }
+
 
 .form-item {
   display: flex;
@@ -63,12 +65,12 @@
   padding: 12px;
   border: 1px solid #d1d5db;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 12px;
   outline: none;
   transition: 0.3s;
   
-  font-family: "IRANSans", Tahoma, Arial, sans-serif;
-  position: relative;
+  font-family: system-ui ,"IRANSans", Tahoma, Arial, sans-serif;
+  /* position: relative; */
   z-index: 10;
 }
 
@@ -86,16 +88,18 @@
 
 .search-btn {
   width: 100%;
+  height: 65%;
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: white;
   border: none;
-  padding: 14px;
+  padding: 10px;
   border-radius: 12px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   transition: 0.3s;
-  margin-top:20px ;
+  margin-top:27px ;
+  margin-right: 50px;
 }
 
 .search-btn:hover {
@@ -109,11 +113,13 @@
   width: 100%;
 }
 
-.custom-input {
+.custom-input2 {
   padding-left: 30px !important; /* جا برای دکمه سمت چپ */
-  width: 100%;
+  width: 30vh;
+  margin-top: -20px;
   box-sizing: border-box;
   text-align: right; /* متن راست به چپ */
+  
 }
 
 .reset-btn {
@@ -134,6 +140,14 @@
 
 .reset-btn:hover {
   color: #9b2c2c;
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* پایین فیلد */
+  left: 0;
+  z-index: 10; /* یا عدد بزرگتر برای اطمینان */
 }
 
 /* 📱 ریسپانسیو */

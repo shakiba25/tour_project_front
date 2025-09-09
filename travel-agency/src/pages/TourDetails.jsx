@@ -5,9 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./TourDetails.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axiosClient from "../api/axiosClient";
+import axiosClient  from "../api/axiosClient";
+import { baseURL } from "../api/base"
 
 const TourDetails = () => {
+
   const { pk } = useParams();
   const [tour, setTour] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,6 +20,7 @@ const TourDetails = () => {
       try {
         const res = await axiosClient.get(`/tours/${pk}/`);
         setTour(res.data);
+        console.log(res.data);
       } catch (err) {
         setError("تور مورد نظر پیدا نشد.");
       } finally {
@@ -52,7 +55,7 @@ const TourDetails = () => {
           <Slider {...sliderSettings}>
             {tour.images?.map((img, index) => (
               <div key={index}>
-                <img src={img} alt={`slide-${index}`} />
+                <img src={`${baseURL}${img.url}`} alt={`slide-${index}`} />
               </div>
             ))}
           </Slider>
@@ -137,7 +140,7 @@ const TourDetails = () => {
                     <li key={i}>
                       {typeof it === "string"
                         ? it
-                        : it?.title || it?.description  || "برنامه نامشخص"}
+                        : it?.title || it?.description || "برنامه نامشخص"}
                     </li>
                   ))}
               </ul>

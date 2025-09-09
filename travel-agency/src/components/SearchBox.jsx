@@ -123,7 +123,7 @@ export default function SearchBox() {
                     date?.format?.("YYYY/MM/DD")
                   );
                 }}
-                inputClass="custom-input"
+                inputClass="custom-input2"
                 placeholder="تاریخ رفت را انتخاب کنید"
                 calendarPosition="bottom-right"
                 format="YYYY/MM/DD"
@@ -151,7 +151,7 @@ export default function SearchBox() {
                 locale={persian_fa}
                 value={endDate}
                 onChange={setEndDate}
-                inputClass="custom-input"
+                inputClass="custom-input2"
                 placeholder="تاریخ برگشت را انتخاب کنید"
                 calendarPosition="bottom-right"
                 format="YYYY/MM/DD"
