@@ -1,18 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // اگر داری React Router استفاده می‌کنی
-
+import { useLocation } from 'react-router-dom';
+import "./Header.css"
 function Header() {
+  const location = useLocation();
+
+  const isLandingPage = location.pathname === '/';
+
   return (
-      <header className="header">
-        <div className="logo">Logo</div>
-        <nav>
-          <a href="#"> صفحه اصلی </a>
-          <a href="#">درباره ما</a>
-          <a href="#">تور‌ها</a>
-          <a href="#">تماس</a>
-        </nav>
-        <button>ورود</button>
-      </header>
+    <header className={`main-header ${isLandingPage ? 'fixed' : ''}`}>
+      <div className="logo">آسمان تور</div>
+      <nav>
+        <a href="/">صفحه اصلی </a>
+        <a href="#">درباره ما </a>
+        <a href="/tours">تور‌ها</a>
+        <a href="#">تماس</a>
+      </nav>
+      <button>ورود</button>
+    </header>
   );
 }
 

@@ -28,7 +28,7 @@ export default function TourFilterBox({
 
   return (
     <aside className="filter-box">
-      <h3>فیلتر تورها</h3>
+      {/* <h3>فیلتر تورها</h3> */}
 
       {/* مقصدها */}
       <div className="filter-section">
@@ -104,7 +104,7 @@ export default function TourFilterBox({
 
       {/* قیمت */}
       <div className="filter-section">
-        <strong>قیمت (دلار):</strong>
+        <strong>قیمت (تومان):</strong>
         <div style={{ marginTop: 15 }}>
           <Slider
             range
@@ -114,7 +114,7 @@ export default function TourFilterBox({
             onChange={setPriceRange}
           />
           <div style={{ marginTop: 10, fontSize: 14 }}>
-            {priceRange[0]}$ - {priceRange[1]}$
+            {priceRange[0]} تومان - {priceRange[1]} تومان
           </div>
         </div>
       </div>

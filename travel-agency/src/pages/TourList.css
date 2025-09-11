@@ -1,3 +1,5 @@
+
+
 .tourlist-container {
   max-width: 1100px;
   margin: 20px auto;
@@ -80,6 +82,9 @@
   display: flex;
   gap: 30px;
   direction: rtl;
+    /* padding-top: 80px; */
+
+
 }
 /* 
 .filter-box {

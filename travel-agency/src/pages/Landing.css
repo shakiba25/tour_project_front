@@ -1,5 +1,5 @@
 /* === استایل هدر (Desktop) === */
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@
 
 .header button:hover {
   background: #1e40af;
-}
+} */
 
 /* === هیرو (Desktop) === */
 .hero {

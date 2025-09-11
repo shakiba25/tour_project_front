@@ -21,7 +21,7 @@
 hr {
   border: none;
   border-top: 1px solid #ddd;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .filter-options {
@@ -41,12 +41,14 @@ hr {
 }
 
 .custom-input {
-  width: 100%;
+  width: 90%;
+  height: 30px;
   padding: 6px 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
   margin-top:10px ;
+  font-family: "Vazirmatn";
   
 }
 

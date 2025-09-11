@@ -206,6 +206,7 @@ export default function TourList() {
   }
 
   return (
+    <div className="page">
     <div className="tour-page">
       <TourFilterBox
         destinations={destinations}
@@ -258,6 +259,7 @@ export default function TourList() {
           ))
         )}
       </section>
+    </div>
     </div>
   );
 }

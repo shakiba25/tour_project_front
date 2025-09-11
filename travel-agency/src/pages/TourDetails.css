@@ -1,272 +1,154 @@
-:root {
-  --main-text: #1f2937;
-  --heading: #1e3a8a;
-  --accent: #2563eb;
-  --subtle: #6b7280;
-  --border: #e5e7eb;
-  --success: #059669;
-  --background-light: #f6f9fd;
-  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  /* --font-fa: "Vazirmatn", sans-serif; */
-}
-
-body {
-  font-family: var(--font-fa);
-}
-
-.tour-container {
-  max-width: 1100px;
-  margin: 1px auto;
-  padding: 20px;
-  color: var(--main-text);
-  direction: rtl;
-  /* background-color: #d9e6ff35; */
-  border-left: 2px solid #ebebeb ;
-  border-right: 2px solid #ebebeb ;
-    box-shadow: var(--box-shadow);
-
-
-}
-
-.tour-header {
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 24px;
-  direction: rtl;
-}
-
-.tour-slider {
-  flex: 1.5;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: var(--box-shadow);
-}
-
-.tour-slider .slick-list,
-.tour-slider .slick-track {
-  direction: ltr;
-}
-
-.tour-slider img {
+.tour-page {
+  position: relative;
   width: 100%;
-  height: 420px;
-  object-fit: cover;
-  display: block;
-  /* border-radius: 5px; */
-}
-
-.tour-info {
-  flex: 1;
+  min-height: 100vh;
+  overflow-x: hidden;
   direction: rtl;
-  background: var(--background-light);
-  padding: 16px 20px;
+  font-family: "Vazirmatn", sans-serif;
+}
+
+.background-slider {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.bg-slide img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* افکت شیشه‌ای روی محتوای صفحه */
+.tour-overlay {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.tour-info-glass,
+.tour-box-glass section {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
   border-radius: 12px;
-  box-shadow: var(--box-shadow);
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.tour-info h1 {
-  margin-bottom: 12px;
-  font-size: 1.5rem;
-  color: var(--heading);
+.tour-info-glass h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #1e3a8a;
 }
 
-.tour-info p {
-  margin: 8px 0;
+.tour-info-glass p {
   font-size: 1rem;
-  color: var(--subtle);
+  color: #1f2937;
+  margin: 8px 0;
 }
 
-.tour-info p strong {
-  color: var(--main-text);
+.tour-info-glass p strong {
+  color: #111827;
 }
 
-.tour-box {
+.tour-box-glass {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 40px;
 }
 
-.tour-box section {
-  background-color: var(--background-light);
-  border-radius: 10px 10px 0px 0px;
-  box-shadow: var(--box-shadow);
-  /* padding: 24px; */
-}
-
-.tour-box h2 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  color: var(--accent);
-}
-
-.hotel-flight p {
-  margin: 6px 0;
-  font-size: 0.95rem;
-  color: var(--main-text);
-    margin-right: 20px;
-    margin-bottom: 10px;
-
-}
-
-.rich{
-  margin-right: 20px;
-  margin-bottom: 10px;
-}
-
-/* ===== نوار بالای باکس‌ها ===== */
-.with-header {
-  padding-top: 50px;
-  position: relative;
-}
-
-.with-header .section-header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 40px;
-  background: linear-gradient(to left, #2a5dde );
-  background-color: hsla(19, 100%, 41%, 0.618);
-  color: #ffffff;
+/* سایر استایل‌ها مثل قبل */
+.section-header {
+  background: rgba(42, 93, 222, 0.8);
+  color: white;
   font-weight: bold;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: inset 0 -1px 0 #e0e7ff;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 20px -20px;
+  text-align: center;
 }
 
-/* ===== خدمات و برنامه بازدید ===== */
-.services-itinerary {
-  /* padding: 0px; */
-  position: relative;
-  overflow: hidden;
+.divider,
+.divider2 {
+  background-color: #e5e7eb;
 }
-.services-itinerary.with-header {
-  padding: 0 !important;
-  
+
+.divider {
+  width: 1px;
 }
+
+.divider2 {
+  height: 2px;
+  width: 60%;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
 .services-itinerary .header-row {
   display: flex;
-  height: 40px;
   background: linear-gradient(to left, #2ac6de 50%, #62a6cd 50%);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 8px 8px 0 0;
   font-weight: bold;
-  font-size: 0.95rem;
-  color: #090000;
-}
-.services-itinerary .with-header{
-  padding: 0px !important; 
-}
-.services-itinerary .header-col {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--border);
+  color: #000;
+  overflow: hidden;
 }
 
+.services-itinerary .header-col {
+  flex: 1;
+  text-align: center;
+  padding: 8px;
+}
 
 .services-itinerary .content-row {
   display: flex;
-  padding: 20px;
+  flex-direction: row;
   gap: 20px;
-  justify-content: center;
+  margin-top: 20px;
 }
 
 .services-itinerary .column {
   flex: 1;
 }
 
-.services-itinerary ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .services-itinerary li {
-  padding: 5px 0;
-  font-size: 0.95rem;
-  color: var(--main-text);
-  position: relative;
+  list-style: none;
   padding-right: 18px;
+  position: relative;
+  color: #1f2937;
+  margin-bottom: 8px;
 }
 
 .services-itinerary li::before {
   content: "✓";
   position: absolute;
   right: 0;
-  color: var(--accent);
-  font-weight: bold;
+  color: #2563eb;
 }
 
-.services-itinerary .divider {
-  width: 1px;
-  background: var(--border);
-}
-
-/* ===== توضیحات ===== */
-.notes {
+.rich {
   line-height: 1.8;
-  color: #374151;
   font-size: 0.95rem;
+  color: #374151;
+  margin-top: 10px;
 }
 
-.divider2 {
-  height: 2px;              /* ضخامت خط */
-  width: 60%;               /* طول خط (کوتاه‌تر از 100%) */
-  background-color: var(--border);
-  margin: 12px auto;        /* فاصله بالا و پایین و وسط چین افقی */
-  border-radius: 2px;       /* گوشه‌های نرم */
-}
-
-/* ===== ریسپانسیو ===== */
-@media (max-width: 992px) {
-  .tour-header {
-    flex-direction: column;
-  }
-
-  .tour-slider img {
-    height: 280px;
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .tour-overlay {
+    padding: 20px;
   }
 
   .services-itinerary .content-row {
     flex-direction: column;
-    padding: 16px;
   }
 
   .services-itinerary .divider {
     display: none;
   }
-
-  .services-itinerary .header-row {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .services-itinerary .header-col {
-    width: 100%;
-    padding: 10px 0;
-    border-bottom: none;
-    border-top: 1px solid var(--border);
-  }
-
-  .services-itinerary .header-col:first-child {
-    border-top: none;
-  }
-
-  .with-header .section-header {
-    font-size: 0.95rem;
-    height: 36px;
-  }
-
-  .with-header {
-    padding-top: 46px;
-  }
-
 }

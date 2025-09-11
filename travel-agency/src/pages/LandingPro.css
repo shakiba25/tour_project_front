@@ -1,0 +1,249 @@
+
+:root {
+  --blue: #4a90e2;
+  --purple: hsla(282, 100%, 86%, 0.501);
+  --gradient: linear-gradient(135deg, #4a90e2, #8e44ad);
+  --card-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* بک‌گراند کلی صفحه */
+.landing-pro {
+  position: relative;
+  z-index: 1;
+  font-family: "Vazirmatn";
+  padding-top: 80px;
+}
+
+.background-blur {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("/images/background2.jpg") center/cover no-repeat;
+  background: url("/images/background.jpg") center/cover no-repeat;
+  
+  filter: blur(5px) brightness(1);
+  z-index: -1;
+}
+
+/* بنر هیرو */
+.hero-pro {
+  position: relative;
+  height: 80vh;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 1s ease forwards;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+.hero-btn {
+  padding: 15px 35px;
+  border-radius: 50px;
+  background: var(--gradient);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.hero-btn:hover {
+  transform: scale(1.1);
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes scaleUp {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.tour-animate-0 { animation: scaleUp 3s ease-in-out infinite; }
+.tour-animate-1 { animation: scaleUp 3s ease-in-out infinite 1s; }
+.tour-animate-2 { animation: scaleUp 3s ease-in-out infinite 2s; }
+
+/* بخش جستجو */
+.search-section-pro {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* چت هوش مصنوعی */
+.ai-chat-section-pro {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+.ai-chat-card-pro {
+  max-width: 500px;
+  background: var(--gradient);
+  color: #fff;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+.ai-chat-card-pro:hover {
+  transform: translateY(-10px);
+}
+.ai-chat-btn-pro {
+  display: inline-block;
+  padding: 12px 30px;
+  margin-top: 20px;
+  background: #fff;
+  color: var(--purple);
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.ai-chat-btn-pro:hover {
+  transform: scale(1.05);
+}
+
+/* خط جداکننده */
+.section-divider {
+  margin: 80px auto;
+  width: 60%;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+/* عناوین و توضیحات */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+.section-desc {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+/* پس‌زمینه رنگی بخش‌ها */
+.colored-section {
+  padding: 34px 20px ;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+  /* max-height: 300px; */
+  position: relative
+}
+
+/* مقاصد محبوب */
+.grid-destinations-pro {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.destination-card-pro {
+  width: 300px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+.destination-card-pro img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.destination-card-pro h3 {
+  padding: 15px;
+  background: #fff;
+  margin: 0;
+  font-weight: bold;
+}
+.destination-card-pro:hover {
+  transform: translateY(-15px);
+}
+
+/* تورها */
+.grid-tours-pro {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.tour-card-pro {
+  width: 300px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+}
+.tour-card-pro:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+.tour-card-pro img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.tour-card-pro h3 {
+  margin: 15px;
+}
+.tour-card-pro p {
+  margin: 0 15px 15px;
+}
+
+/* فوتر */
+.footer-pro {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--purple);
+  color: #fff;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+/* متن بارگذاری */
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 50px;
+}
+
+
+.chat-icon{
+    max-width: 150px;
+}
+
+.pop-icon{
+  position: absolute;
+  /* top: -40px;*/
+  top : -70px;
+  left: 46%; 
+  /* transform: translateX(-50%); */
+  width: 80px; 
+  z-index: 10;
+}

@@ -1,0 +1,143 @@
+/* ======= بنر هیرو ======= */
+.hero-new {
+  position: relative;
+  background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background-color: rgba(0,0,0,0.5);
+  padding: 50px;
+  text-align: center;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+.hero-button {
+  padding: 15px 30px;
+  background: linear-gradient(45deg,#ff7a18,#af002d);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.hero-button:hover {
+  transform: scale(1.1);
+}
+
+/* ======= انیمیشن ======= */
+.animate-fade { animation: fadeIn 1s ease forwards; opacity:0;}
+.animate-fade-delay { animation: fadeIn 1s 0.5s ease forwards; opacity:0;}
+.animate-fade-up { animation: fadeUp 0.8s ease forwards; opacity:0;}
+.animate-zoom { animation: zoomIn 0.8s ease forwards; opacity:0;}
+
+@keyframes fadeIn { to {opacity:1;} }
+@keyframes fadeUp { to {opacity:1; transform: translateY(0);} from {transform: translateY(20px);} }
+@keyframes zoomIn { to {opacity:1; transform: scale(1);} from {transform: scale(0.8);} }
+
+/* ======= بخش جستجو ======= */
+.search-section-new {
+  padding: 50px 20px;
+  background: #f7f9fc;
+}
+
+/* ======= چت هوش مصنوعی ======= */
+.ai-chat-section {
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+}
+.ai-chat-card {
+  background: linear-gradient(135deg,#ffecd2,#fcb69f);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.ai-chat-card h2 { font-size: 2rem; margin-bottom: 15px;}
+.ai-chat-card p { font-size: 1.1rem; margin-bottom: 20px;}
+.ai-chat-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #ff7a18;
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.ai-chat-button:hover { transform: scale(1.05); }
+
+/* ======= مقاصد محبوب ======= */
+.popular-destinations-new {
+  padding: 60px 20px;
+  background: #fff;
+  text-align: center;
+}
+.grid-destinations {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.destination-card-new {
+  width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.destination-card-new img { width: 100%; height: 200px; object-fit: cover; }
+.destination-card-new h3 { padding: 15px; background: #fff; margin: 0; }
+.destination-card-new:hover { transform: translateY(-10px); }
+
+/* ======= تورها ======= */
+.grid-tours {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+.tour-card-new {
+  width: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+.tour-card-new img { width: 100%; height: 200px; object-fit: cover; }
+.tour-card-new h3 { margin: 15px; }
+.tour-card-new p { margin: 0 15px 15px; }
+.tour-card-new:hover { transform: translateY(-10px); }
+
+/* ======= فوتر ======= */
+.footer-new {
+  text-align: center;
+  padding: 30px 20px;
+  background: #222;
+  color: #fff;
+  margin-top: 50px;
+}
+
+/* ======= متن لودینگ ======= */
+.loading-text { text-align:center; padding:50px; font-size:1.5rem; }
