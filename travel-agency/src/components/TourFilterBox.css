@@ -1,10 +1,15 @@
 .filter-box {
   flex-basis: 280px;
   padding: 20px;
+  margin-top: -100px;
   background: #f6f9fd;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   height: fit-content;
+  position: sticky;
+  top: 20px;
+
+    /* این دو خط مهم هستن 👇 */
   position: sticky;
   top: 20px;
 }
@@ -32,7 +37,7 @@ hr {
 }
 
 .destination-scroll {
-  max-height: 130px;
+  max-height: 80px;
   overflow-y: auto;
   border: 1px solid #ddd;
   padding: 8px;
@@ -74,3 +79,14 @@ hr {
   cursor: pointer;
   padding: 2px;
 }
+
+
+.filter-box {
+  transform: scale(0.75); 
+  transform-origin: top center; 
+
+  position: sticky;
+  top: 20px;
+
+}
+

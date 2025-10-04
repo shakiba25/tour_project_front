@@ -19,7 +19,7 @@
   margin-bottom: 20px;
   background: #f6f9fd;
   border-radius: 12px;
-  overflow: hidden;
+  /* overflow: hidden; */
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -54,8 +54,11 @@
   padding: 20px;
   border-radius: 12px;
   height: fit-content;
+
+  /* فقط اینجا sticky باشه */
   position: sticky;
   top: 20px;
+  align-self: flex-start;
 }
 
 .tourlist-filters h3 {
@@ -68,6 +71,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+
 }
 .filter-block input[type="number"],
 .filter-block input[type="date"] {
@@ -82,8 +86,9 @@
   display: flex;
   gap: 30px;
   direction: rtl;
-    /* padding-top: 80px; */
+    padding-top: 80px;
 
+  align-items: flex-start; 
 
 }
 /* 
@@ -147,6 +152,7 @@
   flex-direction: column;
   justify-content: center;
   direction: rtl;
+  border : 1px solid #0000002b;
 }
 
 /* عنوان اصلی تور */
@@ -177,4 +183,8 @@
 
 .separator {
   color: #d1d5db;
+}
+
+.filter-box{
+  margin-top: 200x;
 }

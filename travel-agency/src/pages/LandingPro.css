@@ -86,6 +86,9 @@
 .search-section-pro {
   padding: 60px 20px;
   background: rgba(255, 255, 255, 0.85);
+  /* ماسک با گرادیان که به تدریج شفاف میشه از پایین */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
 }
 
 /* چت هوش مصنوعی */
@@ -143,10 +146,13 @@
   font-size: 1.1rem;
   margin-bottom: 40px;
   color: #666;
+  
 }
 
 /* پس‌زمینه رنگی بخش‌ها */
 .colored-section {
+      transform: scale(0.85); 
+  transform-origin: top center; 
   padding: 34px 20px ;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 20px;
@@ -158,6 +164,7 @@
 
 /* مقاصد محبوب */
 .grid-destinations-pro {
+  
   display: flex;
   gap: 25px;
   justify-content: center;
@@ -187,6 +194,7 @@
 
 /* تورها */
 .grid-tours-pro {
+
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
@@ -246,4 +254,77 @@
   /* transform: translateX(-50%); */
   width: 80px; 
   z-index: 10;
+}
+
+
+/* === درباره ما === */
+.about-us {
+  padding: 60px 80px;
+  background-color: #f9fafb;
+  text-align: center;
+
+}
+
+.about-us h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.about-us p {
+  font-size: 18px;
+  color: #374151;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* === تماس با ما === */
+.contact-us {
+  margin-top: 40px;
+  margin-bottom: -50px;
+  padding: 60px 80px;
+  background-color: #ffffff23;
+  text-align: center;
+}
+
+.contact-us h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.contact-us p {
+  font-size: 18px;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+.contact-us ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.contact-us li {
+  font-size: 18px;
+  color: #4b5563;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .about-us,
+  .contact-us {
+    padding: 40px 20px;
+  }
+
+  .about-us p,
+  .contact-us p,
+  .contact-us li {
+    font-size: 16px;
+  }
 }

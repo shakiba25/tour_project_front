@@ -8,7 +8,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
 export default function SearchBox() {
-  const [activeTab, setActiveTab] = useState(""); // "" یعنی همه
+  const [activeTab, setActiveTab] = useState(""); // "", "domestic", "international"
   const [destinations, setDestinations] = useState([]);
   const [filteredDestinations, setFilteredDestinations] = useState([]);
   const [selectedDestination, setSelectedDestination] = useState("");
@@ -18,21 +18,41 @@ export default function SearchBox() {
   const [hotelStar, setHotelStar] = useState("");
 
   const navigate = useNavigate();
+
+  function toEnglishNumber(str) {
+    if (!str) return str;
+    return str.replace(/[۰-۹]/g, (d) => "۰۱۲۳۴۵۶۷۸۹".indexOf(d).toString());
+  }
+
   const handleSearch = (e) => {
     e.preventDefault();
 
     const params = new URLSearchParams();
 
     if (selectedDestination) params.append("destination", selectedDestination);
-    if (startDate) params.append("startDate", startDate.format("YYYY-MM-DD"));
-    if (endDate) params.append("endDate", endDate.format("YYYY-MM-DD"));
 
-    // تب فعال (داخلی/خارجی) هم اگه خواستی بفرست
-    if (activeTab) params.append("type", activeTab);
+    // مپینگ نوع مقصد
+    const destinationTypeMap = {
+      domestic: "داخلی",
+      international: "خارجی",
+    };
+
+    if (activeTab)
+      params.append("destination_type", destinationTypeMap[activeTab]);
+
+    // if (startDate) params.append("startDate", startDate.format("YYYY-MM-DD"));
+   if (startDate) {
+      const startDateFormatted = startDate.format("YYYY-MM-DD");
+      params.append("startDate", toEnglishNumber(startDateFormatted));
+    }
+
+    if (endDate) params.append("endDate", endDate.format("YYYY-MM-DD"));
 
     if (stayDuration) params.append("duration", stayDuration);
     if (hotelStar) params.append("hotelStar", hotelStar);
+
     // برو به صفحه لیست تورها با پارامترها
+    console.log(`/tours?${params.toString()}`);
     navigate(`/tours?${params.toString()}`);
   };
 
@@ -51,7 +71,6 @@ export default function SearchBox() {
   // فیلتر کردن مقصدها طبق activeTab
   useEffect(() => {
     if (!activeTab) {
-      // اگه چیزی انتخاب نشده، همه مقصدها رو نشون بده
       setFilteredDestinations(destinations);
     } else if (activeTab === "domestic") {
       setFilteredDestinations(
@@ -108,7 +127,7 @@ export default function SearchBox() {
             </select>
           </div>
 
-          {/* تاریخ رفت با دکمه ریست */}
+          {/* تاریخ رفت */}
           <div className="form-item date-picker-wrapper">
             <label>تاریخ رفت</label>
             <div className="date-picker-with-reset">
@@ -116,13 +135,7 @@ export default function SearchBox() {
                 calendar={persian}
                 locale={persian_fa}
                 value={startDate}
-                onChange={(date) => {
-                  setStartDate(date);
-                  console.log(
-                    "تاریخ انتخاب‌شده رفت:",
-                    date?.format?.("YYYY/MM/DD")
-                  );
-                }}
+                onChange={(date) => setStartDate(date)}
                 inputClass="custom-input2"
                 placeholder="تاریخ رفت را انتخاب کنید"
                 calendarPosition="bottom-right"
@@ -142,7 +155,7 @@ export default function SearchBox() {
             </div>
           </div>
 
-          {/* تاریخ برگشت با دکمه ریست */}
+          {/* تاریخ برگشت */}
           <div className="form-item date-picker-wrapper">
             <label>تاریخ برگشت</label>
             <div className="date-picker-with-reset">
@@ -170,6 +183,7 @@ export default function SearchBox() {
             </div>
           </div>
 
+          {/* مدت اقامت */}
           <div className="form-item">
             <label>مدت اقامت</label>
             <select
@@ -188,6 +202,7 @@ export default function SearchBox() {
             </select>
           </div>
 
+          {/* هتل */}
           <div className="form-item">
             <label>هتل</label>
             <select
@@ -211,6 +226,3 @@ export default function SearchBox() {
     </div>
   );
 }
-
-
-

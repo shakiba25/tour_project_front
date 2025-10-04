@@ -5,8 +5,27 @@ import axiosClient from "../api/axiosClient";
 import { baseURL } from "../api/base";
 import SearchBoxPro from "../components/SearchBox";
 import "./LandingPro.css";
+import { useLocation } from "react-router-dom";
 
 export default function LandingPro() {
+   const location = useLocation();
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const scrollToId = query.get("scrollTo");
+
+    if (scrollToId) {
+      // صبر کن تا DOM آماده بشه
+      const timer = setTimeout(() => {
+        const el = document.getElementById(scrollToId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // 300ms یا بیشتر می‌تونی تست کنی
+
+      return () => clearTimeout(timer); // پاکسازی تایمر
+    }
+  }, [location]);
   const [allTours, setAllTours] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -64,9 +83,18 @@ export default function LandingPro() {
         </div>
       </section>
 
+      {/* درباره ما */}
+      <section id="about-us" className="about-us">
+        <h2>درباره ما</h2>
+        <p>
+          آژانس گردشگری آسمان تور با بیش از ۱۰ سال تجربه، با ارائه بهترین تورهای
+          داخلی و خارجی، تلاش می‌کند تا سفرهایی لذت‌بخش و مطمئن برای مشتریان خود
+          فراهم کند. ما به رضایت شما افتخار می‌کنیم.
+        </p>
+      </section>
+
       {/* جستجو */}
       <section className="search-section-pro">
-
         <SearchBoxPro />
       </section>
 
@@ -162,7 +190,16 @@ export default function LandingPro() {
           ))}
         </div>
       </section>
-
+      {/* تماس با ما */}
+      <section id="contact-us" className="contact-us">
+        <h2>تماس با ما</h2>
+        <p>در صورت نیاز به راهنمایی یا اطلاعات بیشتر، با ما در تماس باشید:</p>
+        <ul>
+          <li>📞 تلفن: ۰۲۱-۱۲۳۴۵۶۷۸</li>
+          <li>✉️ ایمیل: info@aseman-tour.com</li>
+          <li>📍 آدرس: تهران، خیابان آزادی، پلاک ۱۲۳</li>
+        </ul>
+      </section>
       <footer className="footer-pro">© 2025 - همه حقوق محفوظ است</footer>
     </div>
   );

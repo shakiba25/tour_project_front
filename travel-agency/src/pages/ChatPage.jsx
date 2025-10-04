@@ -319,19 +319,43 @@ export default function ChatApp() {
   );
 }
 
+// function Message({ role, text, time }) {
+//   return (
+//     <div className={"msg " + (role === "user" ? "msg--user" : "msg--bot")}>
+//       <div className="msg__avatar" aria-hidden>
+//         {role === "user" ? "شما" : "بات"}
+//       </div>
+//       <div className="msg__bubble">
+//         <div className="msg__content">{text}</div>
+//         <div className="msg__meta">{time}</div>
+//       </div>
+//     </div>
+//   );
+// }
+
 function Message({ role, text, time }) {
+  const isHTML = /<\/?[a-z][\s\S]*>/i.test(text); // یک چک ساده برای وجود تگ HTML
+
   return (
     <div className={"msg " + (role === "user" ? "msg--user" : "msg--bot")}>
       <div className="msg__avatar" aria-hidden>
         {role === "user" ? "شما" : "بات"}
       </div>
       <div className="msg__bubble">
-        <div className="msg__content">{text}</div>
+        <div
+          className="msg__content"
+          dangerouslySetInnerHTML={
+            role === "bot" && isHTML ? { __html: text } : undefined
+          }
+        >
+          {role === "user" || !isHTML ? text : null}
+        </div>
         <div className="msg__meta">{time}</div>
       </div>
     </div>
   );
 }
+
 
 function Typing() {
   return (
